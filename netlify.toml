@@ -1,3 +1,4 @@
 [build]
+  command = "echo 'No build step'"
   functions = "netlify-functions"
-  publish = "public" # Or another directory if you have static files to deploy
+  publish = "public" # Or another directory if you have static files
