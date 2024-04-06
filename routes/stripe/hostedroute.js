@@ -1,7 +1,10 @@
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripe = require("stripe")(stripeSecretKey);
+
 const express = require("express");
-const stripe = require("stripe")(
-  "sk_test_51OyW8kFeO7aw5wH94zmD7uVAHDdl4nDA20QyglMPicPVn88yPcKSEcUhBRyUe6fx2fFdRmHc0eG3b3DzO7u1pPB900LFzBrFJP"
-);
+// const stripe = require("stripe")(
+//   "sk_test_51OyW8kFeO7aw5wH94zmD7uVAHDdl4nDA20QyglMPicPVn88yPcKSEcUhBRyUe6fx2fFdRmHc0eG3b3DzO7u1pPB900LFzBrFJP"
+// );
 const router = express();
 
 router.post("/create-checkout-session", async (req, res) => {
@@ -28,8 +31,9 @@ router.post("/create-checkout-session", async (req, res) => {
         ],
         customer_email: "codesense24@gmail.com",
         mode: "payment",
-        success_url: "http://localhost:5000/hosted/success",
-        cancel_url: "http://localhost:5000/hosted/cancel",
+        success_url: "https://httpbin.org/get?status=success",
+cancel_url: "https://httpbin.org/get?status=cancel",
+
       });
       console.log(session);
       return res.redirect(303, session?.url);
