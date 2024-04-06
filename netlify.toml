@@ -1,4 +1,3 @@
 [build]
   command = "echo 'No build step'"
   functions = "netlify-functions"
-  publish = "/"  # Publish the root directory
